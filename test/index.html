@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>EaselJS-clip Test</title>
+
+        <!-- If EaselJS' url or version is changed, remember to change this line below. -->
+        <script src="https://raw.github.com/CreateJS/EaselJS/master/lib/easeljs-0.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../lib/easeljs-clip.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            window.onload = function(){
+                var clipped_disk = new Shape;
+                clipped_disk.graphics.beginFill('#00ff00').drawCircle(0, 0, 100);
+
+                var clipping_rect = new Graphics;
+                clipping_rect.drawRect(0, -50, 100, 100);
+                clipped_disk.clip = clipping_rect;
+
+                var container = new Container;
+                container.addChild(clipped_disk);
+                container.x = 150;
+                container.y = 150;
+
+                var stage = new Stage(document.getElementById('canvas'));
+                stage.addChild(container);
+                stage.update();
+            };
+        </script>
+    </head>
+    <body>
+        <canvas id="canvas" width="300" height="300" style="background-color:#ccc"></canvas>
+    </body>
+</html>
